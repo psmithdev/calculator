@@ -1,0 +1,19 @@
+.numbers {
+    display: flex;
+    height: 400px;
+    width: 50%:
+}
+
+div {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  border: 5px solid green;
+  justify-content: space-around;
+}
+
+.operators {
+    display: flex;
+    height: 400px;
+    width: 50%;
+}
