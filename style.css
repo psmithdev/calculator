@@ -4,13 +4,34 @@
   border: 1px solid black;
   padding: 10px;
   background-color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .display {
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
   text-align: right;
   font-size: 30px;
+  /* border-bottom: 2px solid black; */
+  border-radius: 12px 12px 0 0;
+}
+
+.button {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  color: white;
+  background-color: #333;
+  border: 1px solid black;
+  border-radius: 0 0 12px 12px;
+  cursor: pointer;
+}
+
+.numbers {
+  display: grid;
+  grid-template-columns: repeat(3, 33.33%);
+  grid-gap: 5px;
 }
 
 .buttons {
@@ -35,4 +56,10 @@
 
 .buttons button:active {
   background-color: #555;
+}
+
+@media (max-width: 400px) {
+  .calculator {
+    width: 100%;
+  }
 }
