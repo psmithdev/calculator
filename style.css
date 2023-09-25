@@ -27,7 +27,13 @@
   grid-gap: 5px;
 }
 
-.button {
+.clearEquals {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-gap: 5px;
+}
+
+button {
   width: 100%;
   height: 50px;
   font-size: 20px;
@@ -46,27 +52,11 @@
   grid-gap: 5px;
 }
 
-.buttons {
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  grid-gap: 5px;
-}
-
-.buttons button {
-  width: 100%;
-  height: 50px;
-  font-size: 20px;
-  color: white;
-  background-color: #333;
-  border: 1px solid black;
-  cursor: pointer;
-}
-
-.buttons button:hover {
+button:hover {
   background-color: #444;
 }
 
-.buttons button:active {
+button:active {
   background-color: #555;
 }
 
