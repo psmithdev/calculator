@@ -36,3 +36,11 @@ function operate(num1, num2, operation) {
 }
 
 console.log(operate(4, 4, "add"));
+
+// add event listener for button click and populate display with button value
+document.body.addEventListener("click", (event) => {
+  if (event.target.nodeName == "BUTTON") {
+    let displayValue = document.querySelector(".display");
+    displayValue.textContent += event.target.textContent;
+  }
+});
