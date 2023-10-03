@@ -40,7 +40,12 @@ console.log(operate(4, 4, "add"));
 // add event listener for button click and populate display with button value
 document.body.addEventListener("click", (event) => {
   if (event.target.nodeName == "BUTTON") {
+    console.log(event.target.textContent);
     let displayValue = document.querySelector(".display");
     displayValue.textContent += event.target.textContent;
+
+    if (event.target.classList.contains("clear")) {
+      displayValue.textContent = "";
+    }
   }
 });
