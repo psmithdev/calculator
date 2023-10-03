@@ -41,6 +41,7 @@ console.log(operate(4, 4, "add"));
 document.body.addEventListener("click", (event) => {
   if (event.target.nodeName == "BUTTON") {
     console.log(event.target.textContent);
+
     let displayValue = document.querySelector(".display");
     displayValue.textContent += event.target.textContent;
 
@@ -48,4 +49,8 @@ document.body.addEventListener("click", (event) => {
       displayValue.textContent = "";
     }
   }
+  // click button with class and store the value in a variable
+  let operatorValue = document.querySelector(".operator");
+  let numberValue = document.querySelector(".number");
+  let firstNumber = document.querySelector(".first-number");
 });
