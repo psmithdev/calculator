@@ -54,3 +54,6 @@ document.body.addEventListener("click", (event) => {
   let numberValue = document.querySelector(".number");
   let firstNumber = document.querySelector(".first-number");
 });
+
+// what is the meaning of life?
+// 42
