@@ -16,10 +16,6 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
-// let firstNumber = num1;
-// let secondNumber = num2;
-// let operator = operatorValue;
-
 function operate(num1, num2, operation) {
   if (operation === "add") {
     return add(num1, num2);
@@ -49,11 +45,8 @@ document.body.addEventListener("click", (event) => {
       displayValue.textContent = "";
     }
   }
-  // click button with class and store the value in a variable
-  let operatorValue = document.querySelector(".operator");
-  let numberValue = document.querySelector(".number");
-  let firstNumber = document.querySelector(".first-number");
+  
+  // store first and second number into their own variable, use the operator, call it when the equal sign is pressed
+  let firstNumber = 
+  
 });
-
-// what is the meaning of life?
-// 42
