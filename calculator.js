@@ -45,8 +45,15 @@ document.body.addEventListener("click", (event) => {
       displayValue.textContent = "";
     }
   }
-  
+
   // store first and second number into their own variable, use the operator, call it when the equal sign is pressed
-  let firstNumber = 
-  
+  // let firstNumber =
+});
+
+document.body.addEventListener("click", (event) => {
+  if (event.target.nodeName == "BUTTON") {
+    let firstNumber = document.querySelector(".button");
+    firstNumber.textContent += event.target.textContent;
+    console.log(firstNumber);
+  }
 });
