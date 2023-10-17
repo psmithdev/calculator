@@ -45,15 +45,13 @@ document.body.addEventListener("click", (event) => {
       displayValue.textContent = "";
     }
   }
-
-  // store first and second number into their own variable, use the operator, call it when the equal sign is pressed
-  // let firstNumber =
 });
 
-document.body.addEventListener("click", (event) => {
-  if (event.target.nodeName == "BUTTON") {
-    let firstNumber = document.querySelector(".button");
-    firstNumber.textContent += event.target.textContent;
-    console.log(firstNumber);
-  }
+// iterate through each button with a for loop, need to assign to a variable, first and second number
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+  button.addEventListener("click", () => {
+    console.log(button.className);
+  });
 });
