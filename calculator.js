@@ -1,3 +1,7 @@
+var firstNumber;
+let secondNumber;
+let operator;
+
 function add(a, b) {
   return a + b;
 }
@@ -51,7 +55,10 @@ document.body.addEventListener("click", (event) => {
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    console.log(button.className);
-  });
+  // console.log(button.className);
+  button.addEventListener("click", buttonClick);
 });
+
+function buttonClick() {
+  window.firstNumber = this.className;
+}
