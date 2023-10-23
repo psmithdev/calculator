@@ -61,4 +61,8 @@ buttons.forEach((button) => {
 
 function buttonClick() {
   window.firstNumber = this.className;
+  window.secondNumber = this.className; //not working
 }
+
+// click button, assign variable to first button click, assign variable to second button click
+// use a switch statement? or some if statements in the buttonClick() function?
