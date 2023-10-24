@@ -1,6 +1,7 @@
-var firstNumber;
+let firstNumber;
 let secondNumber;
 let operator;
+let nextInput = "firstNumber";
 
 function add(a, b) {
   return a + b;
@@ -35,9 +36,8 @@ function operate(num1, num2, operation) {
   }
 }
 
-console.log(operate(4, 4, "add"));
+// console.log(operate(4, 4, "add"));
 
-// add event listener for button click and populate display with button value
 document.body.addEventListener("click", (event) => {
   if (event.target.nodeName == "BUTTON") {
     console.log(event.target.textContent);
@@ -51,18 +51,27 @@ document.body.addEventListener("click", (event) => {
   }
 });
 
-// iterate through each button with a for loop, need to assign to a variable, first and second number
 const buttons = document.querySelectorAll("button");
 
 buttons.forEach((button) => {
-  // console.log(button.className);
   button.addEventListener("click", buttonClick);
 });
 
 function buttonClick() {
-  window.firstNumber = this.className;
-  window.secondNumber = this.className; //not working
+  if (nextInput === "firstNumber") {
+    firstNumber = this.className;
+    nextInput = "operator";
+    document.getElementById("firstNumberDisplay").innerText =
+      "First: " + firstNumber;
+  } else if (nextInput === "operator") {
+    operator = this.className;
+    nextInput = "secondNumber";
+    document.getElementById("operatorDisplay").innerText =
+      "Operator: " + operator;
+  } else if (nextInput === "secondNumber") {
+    secondNumber = this.className;
+    nextInput = "firstNumber";
+    document.getElementById("secondNumberDisplay").innerText =
+      "Second: " + secondNumber;
+  }
 }
-
-// click button, assign variable to first button click, assign variable to second button click
-// use a switch statement? or some if statements in the buttonClick() function?
