@@ -61,17 +61,26 @@ function buttonClick() {
   if (nextInput === "firstNumber") {
     firstNumber = this.className;
     nextInput = "operator";
-    document.getElementById("firstNumberDisplay").innerText =
-      "First: " + firstNumber;
+    updateFirstNumberDisplay(firstNumber);
   } else if (nextInput === "operator") {
     operator = this.className;
     nextInput = "secondNumber";
-    document.getElementById("operatorDisplay").innerText =
-      "Operator: " + operator;
+    updateOperatorDisplay(operator);
   } else if (nextInput === "secondNumber") {
     secondNumber = this.className;
     nextInput = "firstNumber";
-    document.getElementById("secondNumberDisplay").innerText =
-      "Second: " + secondNumber;
+    updateSecondNumberDisplay(secondNumber);
   }
+}
+
+function updateFirstNumberDisplay(value) {
+  document.getElementById("firstNumberDisplay").innerText = "First: " + value;
+}
+
+function updateOperatorDisplay(value) {
+  document.getElementById("operatorDisplay").innerText = "Operator: " + value;
+}
+
+function updateSecondNumberDisplay(value) {
+  document.getElementById("secondNumberDisplay").innerText = "Second: " + value;
 }
