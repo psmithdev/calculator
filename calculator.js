@@ -1,86 +1,142 @@
-let firstNumber;
-let secondNumber;
-let operator;
-let nextInput = "firstNumber";
+console.log("Script loaded");
+
+let firstNumber = "";
+let operator = "";
+let secondNumber = "";
+let shouldResetDisplay = false;
+
+// Get display element
+const display = document.querySelector(".display");
+console.log("Display element:", display);
 
 function add(a, b) {
   return a + b;
 }
 
-function subtract(num1, num2) {
-  return num1 - num2;
+function subtract(a, b) {
+  return a - b;
 }
 
-function multiply(array) {
-  let array2 = array;
-  const sumValue2 = array2.reduce((a, b) => a * b);
-  return sumValue2;
+function multiply(a, b) {
+  return a * b;
 }
 
-function divide(num1, num2) {
-  return num1 / num2;
+function divide(a, b) {
+  if (b === 0) {
+    return "Error: Cannot divide by zero";
+  }
+  return a / b;
 }
 
-function operate(num1, num2, operation) {
-  if (operation === "add") {
-    return add(num1, num2);
-  } else if (operation === "subtract") {
-    return subtract(num1, num2);
-  } else if (operation === "multiply") {
-    return multiply([num1, num2]);
-  } else if (operation === "divide") {
-    return divide(num1, num2);
+function operate(operator, a, b) {
+  a = Number(a);
+  b = Number(b);
+
+  switch (operator) {
+    case "+":
+      return add(a, b);
+    case "-":
+      return subtract(a, b);
+    case "*":
+      return multiply(a, b);
+    case "/":
+      return divide(a, b);
+    default:
+      return "Error: Invalid operator";
+  }
+}
+
+// Handle number button clicks
+function handleNumber(number) {
+  if (shouldResetDisplay) {
+    display.textContent = number;
+    shouldResetDisplay = false;
   } else {
-    console.log("not a valid choice");
+    display.textContent =
+      display.textContent === "0" ? number : display.textContent + number;
+  }
+}
+
+// Handle operator button clicks
+function handleOperator(op) {
+  if (firstNumber === "") {
+    firstNumber = display.textContent;
+  }
+  operator = op;
+  shouldResetDisplay = true;
+}
+
+// Handle equals button click
+function handleEquals() {
+  secondNumber = display.textContent;
+
+  if (firstNumber === "" || operator === "" || secondNumber === "") {
     return;
   }
+
+  const result = operate(operator, firstNumber, secondNumber);
+
+  display.textContent = result;
+
+  firstNumber = result;
+  operator = "";
+  secondNumber = "";
+  shouldResetDisplay = true;
 }
 
-// console.log(operate(4, 4, "add"));
+// Handle clear button click
+function handleClear() {
+  display.textContent = "0";
+  firstNumber = "";
+  operator = "";
+  secondNumber = "";
+  shouldResetDisplay = false;
+}
 
-document.body.addEventListener("click", (event) => {
-  if (event.target.nodeName == "BUTTON") {
-    console.log(event.target.textContent);
+// Wait for the DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", () => {
+  // Number buttons
+  const numberButtons = document.querySelectorAll(".numbers button");
+  console.log("Number buttons found:", numberButtons.length);
+  numberButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      console.log("Number button clicked:", button.textContent);
+      handleNumber(button.textContent);
+    });
+  });
 
-    let displayValue = document.querySelector(".display");
-    displayValue.textContent += event.target.textContent;
+  // Operator buttons
+  console.log("Setting up operator buttons...");
+  document
+    .querySelector(".add")
+    .addEventListener("click", () => handleOperator("+"));
+  document
+    .querySelector(".subtract")
+    .addEventListener("click", () => handleOperator("-"));
+  document
+    .querySelector(".multiply")
+    .addEventListener("click", () => handleOperator("*"));
+  document
+    .querySelector(".divide")
+    .addEventListener("click", () => handleOperator("/"));
 
-    if (event.target.classList.contains("clear")) {
-      displayValue.textContent = "";
-    }
+  // Equals button
+  const equalsButton = document.querySelector(".equals");
+  if (equalsButton) {
+    equalsButton.addEventListener("click", () => {
+      console.log("Equals button clicked");
+      handleEquals();
+    });
   }
-});
 
-const buttons = document.querySelectorAll("button");
-
-buttons.forEach((button) => {
-  button.addEventListener("click", buttonClick);
-});
-
-function buttonClick() {
-  if (nextInput === "firstNumber") {
-    firstNumber = this.className;
-    nextInput = "operator";
-    updateFirstNumberDisplay(firstNumber);
-  } else if (nextInput === "operator") {
-    operator = this.className;
-    nextInput = "secondNumber";
-    updateOperatorDisplay(operator);
-  } else if (nextInput === "secondNumber") {
-    secondNumber = this.className;
-    nextInput = "firstNumber";
-    updateSecondNumberDisplay(secondNumber);
+  // Clear button
+  const clearButton = document.querySelector(".clear");
+  if (clearButton) {
+    clearButton.addEventListener("click", () => {
+      console.log("Clear button clicked");
+      handleClear();
+    });
   }
-}
 
-function updateFirstNumberDisplay(value) {
-  document.getElementById("firstNumberDisplay").innerText = "First: " + value;
-}
-
-function updateOperatorDisplay(value) {
-  document.getElementById("operatorDisplay").innerText = "Operator: " + value;
-}
-
-function updateSecondNumberDisplay(value) {
-  document.getElementById("secondNumberDisplay").innerText = "Second: " + value;
-}
+  console.log("Event listeners set up");
+});
